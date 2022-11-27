@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import EditInput from "./EditInputProfile";
+import EditInput from "./EditInput";
 
 export default function Profile() {
   let { id } = useParams();
@@ -11,20 +11,24 @@ export default function Profile() {
     const initialState = { user: "" };
     return initialState;
   });
-
-  console.log(profile);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       await axios
         .get(`http://localhost:8000/api/profiles/${id}`)
-        .then((res) => setProfile({ ...res.data }))
+        .then((res) => {
+          setProfile({ ...res.data });
+          setLoading(false);
+        })
         .catch((err) => console.log(err));
     })();
-  }, []);
+  }, [id]);
+
+  if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="container profile">
       <img src={profile.user.imgUrl} alt="User" />
       <h2>{profile.user.username}</h2>
       <h3>About</h3>

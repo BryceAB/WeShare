@@ -1,0 +1,303 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Roboto:wght@400;700&display=swap");
+
+/* -----Utility----- */
+
+:root {
+  --header-bg-color: #5a2a27;
+  --main-text-color: #1c1018;
+  --main-bg-color: #c9c1ac;
+  --post-bg-color: #5b9ed1;
+  --comment-bg-color: #b0bbbf;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+a {
+  color: var(--main-text-color);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 20px;
+  color: var(--main-text-color);
+  background-color: var(--comment-bg-color);
+  border-radius: 15px;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: var(--post-bg-color);
+  color: white;
+}
+
+/* -----Header----- */
+
+header {
+  background-color: var(--header-bg-color);
+  height: 100px;
+}
+
+header div {
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header div h1 {
+  color: var(--comment-bg-color);
+  font-size: 60px;
+}
+
+header div h1 span {
+  color: var(--post-bg-color);
+}
+
+header div nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  list-style: none;
+  gap: 30px;
+  padding: 10px;
+}
+
+header div nav ul a {
+  color: var(--comment-bg-color);
+}
+
+header div nav ul button {
+  border: 0;
+  background-color: transparent;
+  color: var(--comment-bg-color);
+  font-style: inherit;
+  font-size: 20px;
+  padding: 0;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* -----Posts----- */
+
+.posts {
+  background-color: var(--main-bg-color);
+}
+/* Create Post */
+
+.posts .create-post div {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  align-items: flex-end;
+  padding: 15px;
+}
+
+.posts .create-post div textarea {
+  max-width: 1100px;
+  width: 100%;
+  height: 60px;
+  resize: none;
+  border-radius: 15px;
+}
+
+/* posts data */
+
+.posts {
+  padding: 30px;
+}
+
+.posts .post {
+  background-color: var(--post-bg-color);
+  max-width: 1100px;
+  margin: 30px 30px;
+  padding: 20px;
+  border: var(--main-text-color) 3px solid;
+  border-radius: 20px;
+  font-size: 24px;
+}
+
+.posts .post textarea {
+  resize: none;
+  width: 100%;
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 24px;
+  margin: 5px;
+}
+
+.posts .post .comment {
+  background-color: var(--comment-bg-color);
+  padding: 20px;
+  margin: 20px 30px;
+  border: var(--main-text-color) 2px solid;
+  border-radius: 20px;
+}
+
+.posts .post .comment textarea {
+  resize: none;
+  width: 100%;
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 24px;
+  margin: 5px;
+}
+
+/* Pagination */
+
+.posts nav ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  margin: 30px;
+  border: var(--main-text-color) 2px solid;
+  max-width: 1100px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.posts nav ul .active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* -----Profile----- */
+
+.profile {
+  background-color: var(--main-bg-color);
+  height: 100vh;
+  padding: 50px;
+  font-size: 1.5rem;
+}
+
+.profile h3 {
+  padding: 10px;
+}
+
+.profile textarea {
+  width: 100%;
+  resize: none;
+  padding: 5px;
+  border-radius: 15px;
+  font-size: 1.5rem;
+}
+
+/* -----LoginPage----- */
+
+.login-page {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2rem;
+  background-color: var(--main-bg-color);
+  padding-top: 30px;
+  height: 100vh;
+}
+
+.login-page > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.login-page > div > form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-page form input {
+  font-size: 2rem;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+/* -----About----- */
+
+.about {
+  background-color: var(--main-bg-color);
+  height: 100vh;
+  font-size: 2rem;
+  padding-top: 50px;
+}
+
+.about > div {
+  max-width: 1100px;
+  background-color: var(--post-bg-color);
+  margin: 10px 50px;
+  padding: 20px;
+  border: var(--main-text-color) 3px solid;
+  border-radius: 20px;
+}
+
+/* -----Footer----- */
+
+footer {
+  background-color: var(--header-bg-color);
+  color: var(--comment-bg-color);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+}
+
+/* -----Media Querys----- */
+
+#hamburger {
+  display: none;
+}
+
+@media only screen and (max-width: 850px) {
+  .login-page {
+    flex-direction: column;
+  }
+  #hamburger {
+    display: flex;
+    fill: var(--comment-bg-color);
+    background-color: transparent;
+    border-color: transparent;
+  }
+  #hidden {
+    display: none;
+  }
+  #unhidden {
+    position: absolute;
+    right: 0px;
+    top: 100px;
+    height: 300px;
+    background-color: var(--header-bg-color);
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .user {
+    justify-content: flex-start;
+  }
+}

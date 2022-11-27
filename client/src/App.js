@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Post from "./components/Post";
 import { Route, Routes } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [userToken, setUserToken] = useState(

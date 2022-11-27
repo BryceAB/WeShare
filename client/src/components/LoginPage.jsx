@@ -4,7 +4,7 @@ import Register from "./Register";
 
 export default function LoginPage() {
   return (
-    <div>
+    <div className="container login-page">
       <Login />
       <Register />
     </div>

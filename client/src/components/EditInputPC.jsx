@@ -2,22 +2,15 @@ import React from "react";
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import axios from "axios";
-import { useEffect } from "react";
 
-export default function EditInput(props) {
+export default function EditInputPC(props) {
   const [userToken] = useContext(UserContext);
-  const [{ userId, id, text, index }, setProps] = useState(() => props);
   const [textEdit, setTextEdit] = useState(() => {
-    const initialState = text;
+    const initialState = props.text;
     return initialState;
   });
   const [isEditing, setIsEditing] = useState(() => false);
-
-  useEffect(() => {
-    if (props.text !== "" || undefined || null) {
-      setProps({ ...props });
-    }
-  }, [props]);
+  const [deleted, setDeleted] = useState(false);
 
   function handleChange(event) {
     setTextEdit(event.target.value);
@@ -29,38 +22,41 @@ export default function EditInput(props) {
 
   async function handleSubmit() {
     let submitObj = {};
-    switch (index) {
+    switch (props.index) {
       case "post":
         submitObj = { jwt: userToken.token, post: textEdit };
         await axios
-          .post(`http://localhost:8000/api/posts/${id}`, submitObj)
+          .post(`http://localhost:8000/api/posts/${props.id}`, submitObj)
           .catch((err) => console.log(err));
         break;
       case "comment":
-        submitObj = { jwt: userToken.token, comment: textEdit };
+        submitObj = {
+          jwt: userToken.token,
+          commentId: props.id,
+          comment: textEdit,
+        };
         await axios
-          .post(`localhost:8000/api/comments/${id}`, submitObj)
+          .post(`http://localhost:8000/api/comments/${props.id}`, submitObj)
           .catch((err) => console.log(err));
         break;
       default:
-        submitObj = { jwt: userToken.token, [index]: textEdit };
+        submitObj = { jwt: userToken.token, [props.index]: textEdit };
         await axios
-          .post(`http://localhost:8000/api/profiles/${id}`, submitObj)
+          .post(`http://localhost:8000/api/profiles/${props.id}`, submitObj)
           .catch((err) => console.log(err));
     }
   }
 
   async function handleDelete() {
-    let submitObj = { jwt: userToken.token };
-    switch (index) {
+    switch (props.index) {
       case "post":
         await axios
-          .delete(`http://localhost:8000/api/posts/${id}`, submitObj)
+          .delete(`http://localhost:8000/api/posts/${props.id}`)
           .catch((err) => console.log(err));
         break;
       case "comment":
         await axios
-          .delete(`http://localhost:8000/api/comments/${id}`, submitObj)
+          .delete(`http://localhost:8000/api/comments/${props.id}`)
           .catch((err) => console.log(err));
         break;
       default:
@@ -68,15 +64,17 @@ export default function EditInput(props) {
     }
   }
 
+  if (deleted) return <p>Deleted</p>;
+
   return (
     <>
-      {userId === userToken.userId ? (
+      {props.userId === userToken.userId ? (
         isEditing ? (
           <>
             <textarea
               type="text"
               onChange={handleChange}
-              name={index}
+              name={props.index}
               value={textEdit}
             />
             <button
@@ -92,11 +90,14 @@ export default function EditInput(props) {
           <>
             <p>{textEdit}</p>
             <button onClick={handleEdit}>Edit</button>
-            {index !== "post" || "comment" ? (
-              <button onClick={handleDelete}>Delete</button>
-            ) : (
-              ""
-            )}
+            <button
+              onClick={() => {
+                handleDelete();
+                setDeleted(true);
+              }}
+            >
+              Delete
+            </button>
           </>
         )
       ) : (

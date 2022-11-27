@@ -7,7 +7,7 @@ let activeTokens = [];
 module.exports = {
   tokenCreate: async (user) => {
     const token = await jwt.sign(user, process.env.JWT_SECRET, {
-      expiresIn: "24h",
+      expiresIn: "7d",
     });
     activeTokens.push(token);
     return token;
@@ -16,10 +16,10 @@ module.exports = {
     activeTokens = activeTokens.filter((val) => val !== token);
   },
   tokenDescrambler: async (token) => {
-    if (activeTokens.includes(token)) {
+    if (token) {
       return await jwt.verify(token, process.env.JWT_SECRET);
     } else {
-      return await jwt.verify(token, process.env.JWT_SECRET);
+      return undefined;
     }
   },
 };

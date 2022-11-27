@@ -24,24 +24,18 @@ exports.createComment = async (req, res) => {
     res.status(400).send({ err: "Invalid Token" });
   }
 };
+
 exports.deleteComment = async (req, res) => {
-  const user = await tokenDescrambler(req.body.jwt);
   const comment = await CommentsModel.findByPk(+req.params.id);
-  if (user === undefined || comment === null) {
-    res.status(400).send({ err: "Cannot delete comment" });
-  } else {
-    if (user.id === comment.dataValues.userId || 0) {
-      CommentsModel.destroy({
-        where: {
-          id: comment.dataValues.id,
-        },
-      });
-      res.status(200).send({ msg: "Success" });
-    } else {
-      res.status(400).send({ err: "Cannot delete comment" });
-    }
+  if (comment) {
+    CommentsModel.destroy({
+      where: {
+        id: comment.dataValues.id,
+      },
+    });
   }
 };
+
 exports.updateComment = async (req, res) => {
   const user = await tokenDescrambler(req.body.jwt);
   const comment = await CommentsModel.findByPk(+req.params.id);

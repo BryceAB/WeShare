@@ -23,11 +23,11 @@ export default function User(props) {
   }, []);
 
   return (
-    <div>
-      <Link to={`/profile/${user.id}`}>
+    <Link to={`/profile/${user.id}`}>
+      <div className="user">
         <img src={user.imgUrl} alt="User" />
         <h3>{user.username}</h3>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

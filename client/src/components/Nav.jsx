@@ -4,9 +4,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import axios from "axios";
+import { useState } from "react";
 
 export default function Nav() {
   const [userToken, setUserToken] = useContext(UserContext);
+  const [showLinks, setShowLinks] = useState(true);
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -14,13 +16,20 @@ export default function Nav() {
       jwt: userToken.jwt,
     });
     navigate("/");
-    setUserToken({});
+    setUserToken([]);
     localStorage.removeItem("userTokenWeShare");
   }
 
   return (
     <nav>
-      <ul>
+      <button id="hamburger" onClick={() => setShowLinks(!showLinks)}>
+        <svg viewBox="0 0 100 80" width="40" height="40">
+          <rect width="100" height="20"></rect>
+          <rect y="30" width="100" height="20"></rect>
+          <rect y="60" width="100" height="20"></rect>
+        </svg>
+      </button>
+      <ul id={showLinks ? "hidden" : "unhidden"}>
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
@@ -35,7 +44,7 @@ export default function Nav() {
           )}
         </li>
         {typeof userToken.userId === "number" ? (
-          <li>
+          <li id={showLinks ? "hidden" : "unhidden"}>
             <User />
           </li>
         ) : (

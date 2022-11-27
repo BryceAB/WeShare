@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Footer() {
-  return <div>&copy;2022 Bryce Billingsley</div>;
+  return (
+    <footer>
+      <div className="container">&copy;2022 Bryce Billingsley</div>
+    </footer>
+  );
 }

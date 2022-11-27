@@ -25,27 +25,15 @@ exports.createPost = async (req, res) => {
   }
 };
 exports.deletePost = async (req, res) => {
-  const user = await tokenDescrambler(req.body.jwt);
   const post = await PostsModel.findByPk(+req.params.id);
-  if (user === undefined || post === null) {
-    res.status(400).send({ err: "Cannot delete post" });
-  } else {
-    if (user.id === post.dataValues.userId || 0) {
-      PostsModel.destroy({
-        where: {
-          id: post.dataValues.id,
-        },
-      });
-      res.status(200).send({ msg: "Success" });
-    } else {
-      res.status(400).send({ err: "Cannot delete post" });
-    }
-  }
+  PostsModel.destroy({
+    where: {
+      id: post.dataValues.id,
+    },
+  });
 };
 exports.getAllPostsandComments = async (req, res) => {
   PostsModel.findAll({
-    limit: 30,
-    offset: (req.params.id - 1) * 30,
     order: [["createdAt", "DESC"]],
     include: [
       {
@@ -53,7 +41,7 @@ exports.getAllPostsandComments = async (req, res) => {
       },
       {
         model: CommentsModel,
-        order: [["createdAt", "ASC"]],
+        order: [["createdAt", "DESC"]],
         include: {
           model: UsersModel,
         },
