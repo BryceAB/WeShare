@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const users = require("./server/routes/users");
-const posts = require("./server/routes/posts");
-const comments = require("./server/routes/comments");
-const profiles = require("./server/routes/profiles");
+const users = require("./routes/users");
+const posts = require("./routes/posts");
+const comments = require("./routes/comments");
+const profiles = require("./routes/profiles");
 const path = require("path");
 
 dotenv.config();
@@ -15,18 +15,18 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
 
 app.get("/css", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "/frontend/build/static/css/main.dc6650d7.css")
+    path.join(__dirname, "../frontend/build/static/css/main.dc6650d7.css")
   );
 });
 
 app.get("/js", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "/frontend/build/static/js/main.304f6a1c.js")
+    path.join(__dirname, "../frontend/build/static/js/main.304f6a1c.js")
   );
 });
 
