@@ -13,6 +13,22 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+});
+
+app.get("/css", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "./frontend/build/static/css/main.dc6650d7.css")
+  );
+});
+
+app.get("/js", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "./frontend/build/static/js/main.304f6a1c.js")
+  );
+});
+
 app.use("/api/users", users);
 app.use("/api/posts", posts);
 app.use("/api/comments", comments);
