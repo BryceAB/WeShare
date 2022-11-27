@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const users = require("./routes/users");
-const posts = require("./routes/posts");
-const comments = require("./routes/comments");
-const profiles = require("./routes/profiles");
+const users = require("./server/routes/users");
+const posts = require("./server/routes/posts");
+const comments = require("./server/routes/comments");
+const profiles = require("./server/routes/profiles");
 
 dotenv.config();
 
