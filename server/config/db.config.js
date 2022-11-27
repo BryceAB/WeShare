@@ -8,6 +8,11 @@ dotenv.config({ path: require("find-config")(".env") });
 
 const sequelize = new Sequelize(config.DB.DBURI, {
   dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 (async () => await sequelize.sync())().catch((err) => console.log(err));
