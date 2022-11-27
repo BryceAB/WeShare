@@ -23,7 +23,7 @@ export default function CreatePC(props) {
           post: textInput,
         };
         await axios
-          .post(`http://localhost:8000/api/posts`, submitObj)
+          .post(`https://weshare.herokuapp.com/api/posts`, submitObj)
           .then((res) => res)
           .catch((err) => console.log(err.request));
         break;
@@ -34,7 +34,7 @@ export default function CreatePC(props) {
           comment: textInput,
         };
         await axios
-          .post(`http://localhost:8000/api/comments`, submitObj)
+          .post(`https://weshare.herokuapp.com/api/comments`, submitObj)
           .then((res) => res)
           .catch((err) => console.log(err.request));
         break;

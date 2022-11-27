@@ -22,7 +22,7 @@ export default function Login() {
   async function handleSubmit(event) {
     event.preventDefault();
     await axios
-      .post("http://localhost:8000/api/users/1", loginInfo)
+      .post("https://weshare.herokuapp.com/api/users/1", loginInfo)
       .then((res) => {
         setUserToken(res.data);
         localStorage.setItem("userTokenWeShare", JSON.stringify(res.data));

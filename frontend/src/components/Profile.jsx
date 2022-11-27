@@ -16,7 +16,7 @@ export default function Profile() {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`http://localhost:8000/api/profiles/${id}`)
+        .get(`https://weshare.herokuapp.com/api/profiles/${id}`)
         .then((res) => {
           setProfile({ ...res.data });
           setLoading(false);

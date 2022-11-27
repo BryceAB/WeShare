@@ -22,7 +22,7 @@ export default function Register() {
   async function handleSubmit(event) {
     event.preventDefault();
     await axios
-      .post(`http://localhost:8000/api/users`, formData)
+      .post(`https://weshare.herokuapp.com/api/users`, formData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     setFormData({ name: "", username: "", password: "", email: "" });

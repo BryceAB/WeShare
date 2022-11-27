@@ -12,7 +12,7 @@ export default function Nav() {
   const navigate = useNavigate();
 
   function handleLogout() {
-    axios.put(`http://localhost:8000/api/users/${userToken.userId}`, {
+    axios.put(`https://weshare.herokuapp.com/api/users/${userToken.userId}`, {
       jwt: userToken.jwt,
     });
     navigate("/");

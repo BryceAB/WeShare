@@ -12,7 +12,7 @@ export default function User(props) {
     (async () => {
       if (!props.user) {
         await axios
-          .get(`http://localhost:8000/api/users/${userToken.userId}`)
+          .get(`https://weshare.herokuapp.com/api/users/${userToken.userId}`)
           .then((res) => setUser(res.data.user))
           .catch((err) => console.log(err));
       } else {

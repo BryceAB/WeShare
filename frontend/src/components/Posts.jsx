@@ -21,7 +21,7 @@ export default function Posts() {
   useEffect(() => {
     (() => {
       axios
-        .put(`http://localhost:8000/api/posts/1`)
+        .put(`https://weshare.herokuapp.com/api/posts/1`)
         .then((res) => {
           setPosts(res.data);
           setLoading(false);

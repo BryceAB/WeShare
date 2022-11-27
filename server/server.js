@@ -25,9 +25,7 @@ app.get("/css", (req, res) => {
 });
 
 app.get("/js", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../frontend/build/static/js/main.304f6a1c.js")
-  );
+  res.sendFile(path.join(__dirname, "../frontend/build/static/js/main.js"));
 });
 
 app.use("/api/users", users);

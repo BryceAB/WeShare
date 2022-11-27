@@ -25,19 +25,28 @@ export default function EditInput(props) {
       case "post":
         submitObj = { jwt: userToken.token, post: textEdit };
         await axios
-          .post(`http://localhost:8000/api/posts/${props.id}`, submitObj)
+          .post(
+            `https://weshare.herokuapp.com/api/posts/${props.id}`,
+            submitObj
+          )
           .catch((err) => console.log(err));
         break;
       case "comment":
         submitObj = { jwt: userToken.token, comment: textEdit };
         await axios
-          .post(`localhost:8000/api/comments/${props.id}`, submitObj)
+          .post(
+            `https://weshare.herokuapp.com/api/comments/${props.id}`,
+            submitObj
+          )
           .catch((err) => console.log(err));
         break;
       default:
         submitObj = { jwt: userToken.token, [props.index]: textEdit };
         await axios
-          .post(`http://localhost:8000/api/profiles/${props.id}`, submitObj)
+          .post(
+            `https://weshare.herokuapp.com/api/profiles/${props.id}`,
+            submitObj
+          )
           .catch((err) => console.log(err));
     }
   }
