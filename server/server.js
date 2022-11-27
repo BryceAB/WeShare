@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const users = require("./routes/users");
 const posts = require("./routes/posts");
 const comments = require("./routes/comments");
-const profiles = require("././routes/profiles");
+const profiles = require("./routes/profiles");
 
 dotenv.config();
 
