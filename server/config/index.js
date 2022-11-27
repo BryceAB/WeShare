@@ -17,6 +17,7 @@ const config = {
     USER: getEnvVariable("USER"),
     DATABASE: getEnvVariable("DATABASE"),
     PASSWORD: getEnvVariable("PASSWORD"),
+    DBURI: getEnvVariable("DBURI"),
   },
   JWT: {
     SECRET: getEnvVariable("JWT_SECRET"),

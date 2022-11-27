@@ -6,15 +6,9 @@ const config = require("./index");
 
 dotenv.config({ path: require("find-config")(".env") });
 
-const sequelize = new Sequelize(
-  config.DB.DATABASE,
-  config.DB.USER,
-  config.DB.PASSWORD,
-  {
-    dialect: "mysql",
-    host: config.DB.HOST,
-  }
-);
+const sequelize = new Sequelize(config.DB.DBURI, {
+  dialect: "postgres",
+});
 
 (async () => await sequelize.sync())().catch((err) => console.log(err));
 

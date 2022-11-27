@@ -7,7 +7,7 @@ let activeTokens = [];
 module.exports = {
   tokenCreate: async (user) => {
     const token = await jwt.sign(user, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "50d",
     });
     activeTokens.push(token);
     return token;
