@@ -15,15 +15,15 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile("./frontend/build/index.html");
+  res.sendFile("/frontend/build/index.html");
 });
 
 app.get("/css", (req, res) => {
-  res.sendFile("./frontend/build/static/css/main.dc6650d7.css");
+  res.sendFile("/frontend/build/static/css/main.dc6650d7.css");
 });
 
 app.get("/js", (req, res) => {
-  res.sendFile("./frontend/build/static/js/main.304f6a1c.js");
+  res.sendFile("/frontend/build/static/js/main.304f6a1c.js");
 });
 
 app.use("/api/users", users);
