@@ -14,18 +14,18 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
 });
 
 app.get("/css", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "./frontend/build/static/css/main.dc6650d7.css")
+    path.join(__dirname, "/frontend/build/static/css/main.dc6650d7.css")
   );
 });
 
 app.get("/js", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "./frontend/build/static/js/main.304f6a1c.js")
+    path.join(__dirname, "/frontend/build/static/js/main.304f6a1c.js")
   );
 });
 
