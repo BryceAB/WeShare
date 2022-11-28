@@ -6,22 +6,54 @@ export default function About() {
       <div>
         <h3>About</h3>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam,
-          nobis expedita sit nostrum dolorum praesentium temporibus maxime,
-          accusamus repellendus necessitatibus exercitationem eos provident
-          delectus sunt non aliquid vero saepe laudantium, obcaecati iusto dicta
-          neque? Porro quas aliquam facilis dolorem iure ea harum natus eveniet
-          nemo vitae, delectus veniam saepe laudantium mollitia nulla tenetur
-          tempore eum sint temporibus libero, hic ratione quo! Consequatur
-          laborum libero nam, suscipit consectetur sequi quae vero voluptas,
-          quidem expedita rerum sed quis ea velit enim veritatis obcaecati.
-          Quasi voluptate veniam in tempora quae placeat soluta porro, nulla
-          expedita adipisci pariatur aliquam reiciendis, ea molestiae quas
-          libero rerum aspernatur ipsa aut. Unde dicta pariatur distinctio
-          suscipit illo nesciunt. Hic necessitatibus laudantium fugit molestiae
-          aliquid odio error sed mollitia dolore temporibus enim, aspernatur est
-          ut similique nulla officiis, rerum reprehenderit, ipsa reiciendis
-          quam!
+          This was my first project after bootcamp. I made it using Postgres,
+          Node, Express, Axios, JWT, Sequelize, Bcrypt, and React. Its hosted on
+          heroku. It took me a little over a week to make this app. I learned a
+          lot and expect I will be a lot faster in the future. The github repo
+          is available
+          <a
+            href="https://github.com/BryceAB/WeShare"
+            target="_blank"
+            style={{
+              color: "blue",
+              textDecoration: "underline",
+              fontSize: "inherit",
+              paddingRight: "5px",
+              paddingLeft: "5px",
+            }}
+          >
+            here
+          </a>
+          , my Linkedin is available
+          <a
+            href="https://www.linkedin.com/in/bryce-billingsley-91947b243/"
+            target="_blank"
+            style={{
+              color: "blue",
+              textDecoration: "underline",
+              fontSize: "inherit",
+              paddingRight: "5px",
+              paddingLeft: "5px",
+            }}
+          >
+            here
+          </a>
+          , and my Upwork is located{" "}
+          <a
+            href="https://www.upwork.com/freelancers/~0186bf992a0eda8f97"
+            target="_blank"
+            style={{
+              color: "blue",
+              textDecoration: "underline",
+              fontSize: "inherit",
+              paddingRight: "5px",
+              paddingLeft: "5px",
+            }}
+          >
+            here
+          </a>
+          . Please feel free to contact me about any projects or jobs you would
+          consider me for! Thanks!
         </p>
       </div>
     </div>
