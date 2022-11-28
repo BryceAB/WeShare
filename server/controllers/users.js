@@ -39,23 +39,27 @@ exports.registerUser = async (req, res) => {
 };
 exports.loginUser = async (req, res) => {
   const { username, password } = req.body;
-  const user = await UsersModel.findOne({
+  await UsersModel.findOne({
     where: {
       username: username,
     },
-  });
-  await bcrypt.compare(
-    password,
-    user.dataValues.passhash,
-    async (err, result) => {
-      if (result) {
-        const token = await tokenCreate(user.dataValues);
-        res.status(200).send({ token: token, userId: user.id });
-      } else {
-        res.sendStatus(400);
-      }
-    }
-  );
+  })
+    .then(
+      async (res) =>
+        await bcrypt.compare(
+          password,
+          res.dataValues.passhash,
+          async (err, result) => {
+            if (result) {
+              const token = await tokenCreate(user.dataValues);
+              res.status(200).send({ token: token, userId: user.id });
+            } else {
+              res.sendStatus(400);
+            }
+          }
+        )
+    )
+    .catch((err) => console.log(err));
 };
 exports.logoutUser = async (req, res) => {
   tokenDelete(req.body.jwt);
