@@ -41,7 +41,7 @@ exports.getAllPostsandComments = async (req, res) => {
       },
       {
         model: CommentsModel,
-        order: [["createdAt", "DESC"]],
+        order: [["createdAt", "ASC"]],
         include: {
           model: UsersModel,
         },
