@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.css": "/main.css",
+    "main.js": "/main.js",
+    "index.html": "/index.html",
+    "main.dc6650d7.css.map": "/main.css.map",
+    "main.f38f3888.js.map": "/main.js.map"
+  },
+  "entrypoints": ["./main.css", "./main.js"]
+}
