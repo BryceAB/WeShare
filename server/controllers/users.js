@@ -44,21 +44,21 @@ exports.loginUser = async (req, res) => {
       username: username,
     },
   })
-    .then(
-      async (res) =>
-        await bcrypt.compare(
-          password,
-          res.dataValues.passhash,
-          async (err, result) => {
-            if (result) {
-              const token = await tokenCreate(user.dataValues);
-              res.status(200).send({ token: token, userId: user.id });
-            } else {
-              res.sendStatus(400);
-            }
+    .then(async (res) => {
+      console.log(res);
+      await bcrypt.compare(
+        password,
+        res.dataValues.passhash,
+        async (err, result) => {
+          if (result) {
+            const token = await tokenCreate(res.dataValues);
+            res.status(200).send({ token: token, userId: user.id });
+          } else {
+            res.sendStatus(400);
           }
-        )
-    )
+        }
+      );
+    })
     .catch((err) => console.log(err));
 };
 exports.logoutUser = async (req, res) => {
