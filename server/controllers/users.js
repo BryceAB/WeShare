@@ -45,19 +45,22 @@ exports.loginUser = async (req, res) => {
     },
   })
     .then(async (res) => {
-      console.log(res);
-      await bcrypt.compare(
-        password,
-        res.dataValues.passhash,
-        async (err, result) => {
-          if (result) {
-            const token = await tokenCreate(res.dataValues);
-            res.status(200).send({ token: token, userId: user.id });
-          } else {
-            res.sendStatus(400);
+      if (res !== null) {
+        await bcrypt.compare(
+          password,
+          res.data.dataValues.passhash,
+          async (err, result) => {
+            if (result) {
+              const token = await tokenCreate(res.data.dataValues);
+              res.status(200).send({ token: token, userId: user.id });
+            } else {
+              res.sendStatus(400);
+            }
           }
-        }
-      );
+        );
+      } else {
+        res.status(400).send("Invalid Login");
+      }
     })
     .catch((err) => console.log(err));
 };
