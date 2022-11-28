@@ -22,6 +22,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 10px;
 }
 
 img {
@@ -128,6 +129,7 @@ header div nav ul button {
 
 .posts {
   padding: 30px;
+  min-height: 100vh;
 }
 
 .posts .post {
@@ -239,7 +241,7 @@ header div nav ul button {
 
 .about {
   background-color: var(--main-bg-color);
-  height: 100vh;
+  min-height: 100vh;
   font-size: 2rem;
   padding-top: 50px;
 }
@@ -299,5 +301,30 @@ footer {
 
   .user {
     justify-content: flex-start;
+  }
+
+  /* -----PaddingAdjustments----- */
+
+  .posts {
+    padding: 0px;
+    padding-top: 10px;
+  }
+
+  .posts .post {
+    margin: 10px;
+  }
+
+  .posts .post .comment {
+    padding: 10px;
+    margin: 10px 15px;
+  }
+
+  .about > div {
+    margin: 10px 10px;
+    font-size: 1.25rem;
+  }
+
+  .profile {
+    padding: 15px;
   }
 }
