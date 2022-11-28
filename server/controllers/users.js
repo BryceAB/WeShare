@@ -44,15 +44,17 @@ exports.loginUser = async (req, res) => {
       username: username,
     },
   })
-    .then(async (res) => {
-      if (res !== null) {
+    .then(async (DBres) => {
+      if (DBres !== null) {
         await bcrypt.compare(
           password,
-          res.data.dataValues.passhash,
+          DBres.dataValues.passhash,
           async (err, result) => {
             if (result) {
-              const token = await tokenCreate(res.data.dataValues);
-              res.status(200).send({ token: token, userId: user.id });
+              const token = await tokenCreate(DBres.dataValues);
+              res
+                .status(200)
+                .send({ token: token, userId: DBres.dataValues.id });
             } else {
               res.sendStatus(400);
             }
