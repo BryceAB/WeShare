@@ -97,7 +97,7 @@ export default function EditInputPC(props) {
           </>
         ) : (
           <>
-            <p>{textEdit}</p>
+            <pre>{textEdit}</pre>
             <button onClick={handleEdit}>Edit</button>
             <button
               onClick={() => {
@@ -110,7 +110,7 @@ export default function EditInputPC(props) {
           </>
         )
       ) : (
-        <p>{textEdit}</p>
+        <pre>{textEdit}</pre>
       )}
     </>
   );
